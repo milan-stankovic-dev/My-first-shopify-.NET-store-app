@@ -10,10 +10,15 @@ namespace MyPublicShopifyApp.Pages.Auth
 
         public IActionResult OnGet(string shop = "previous-stare.myshopify.com")
         {
-            var state = Guid.NewGuid().ToString();
-            var authUrl = _urlBuilder.BuildAuthUrl(shop, state);
+            if (Request.Cookies.TryGetValue("tokencookie", out var token) && !string.IsNullOrEmpty(token))
+            {
+                return RedirectToPage("/Products/List");
+            }
 
-            return Redirect(authUrl);
-        }
+                var state = Guid.NewGuid().ToString();
+                var authUrl = _urlBuilder.BuildAuthUrl(shop, state);
+                
+                return Redirect(authUrl);
+            }
     }
 }
