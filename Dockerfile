@@ -4,12 +4,11 @@ WORKDIR /src
 
 # Copy csproj and restore as distinct layers
 COPY *.sln .
-COPY MyPublicShopifyApp/*.csproj ./MyPublicShopifyApp/
+COPY *.csproj ./
 RUN dotnet restore
 
 # Copy everything and build
-COPY MyPublicShopifyApp/. ./MyPublicShopifyApp/
-WORKDIR /src/MyPublicShopifyApp
+COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
 # Runtime image
@@ -17,7 +16,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Expose port 8080 for Render (Render forwards traffic here)
+# Expose port 8080 for Render
 EXPOSE 8080
 
 # Run the app
