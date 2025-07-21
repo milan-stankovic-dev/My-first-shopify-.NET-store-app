@@ -1,9 +1,25 @@
+using MyPublicShopifyApp.Services;
+using MyPublicShopifyApp.Settings;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddAuthentication("ShopifyCookie")
+    .AddCookie("ShopifyCookie", options =>
+    {
+        options.Cookie.Name = "ShopifyAuthCookie";
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
+    });
+builder.Services.AddSingleton<IShopifyUrlBuilder, ShopifyUrlBuilder>();
+
+builder.Services.Configure<ShopifySettings>(
+    builder.Configuration.GetSection("Shopify"));
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -18,6 +34,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
