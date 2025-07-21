@@ -1,0 +1,73 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio / Rider / VS Code settings
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.idea/
+*.vscode/
+
+# Logs
+*.log
+logs/
+
+# ASP.NET Core app secrets
+secrets.json
+appsettings.Development.json
+
+# Publish output folder (optional, if you don't want to track published files)
+publish/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Dotnet cache
+*.dbmdl
+
+# Rider local files
+.idea/
+
+# MacOS files
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# JetBrains Rider files
+.idea/
+
+# npm packages (if you use Node tooling)
+node_modules/
+
+# Dotnet user files
+*.dotCover
+*.dotCover.xml
+
+# Other files you may want to ignore
+*.vsconfig
+
+# Coverage files
+coverage/
+*.coverage
+*.coveragexml
+*.lcov
+
+# Resharper files
+_ReSharper*/
+
+# Backup files
+*.bak
+*.backup
+
+# Publish artifacts
+*.publish/
+
+# Entity Framework migrations snapshot files
+*Snapshot.cs
+
