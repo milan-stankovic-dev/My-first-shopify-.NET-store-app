@@ -4,12 +4,12 @@ WORKDIR /src
 
 # Copy csproj and restore as distinct layers
 COPY *.sln .
-COPY MyFirstShopifyApp/*.csproj ./MyFirstShopifyApp/
+COPY MyPublicShopifyApp/*.csproj ./MyPublicShopifyApp/
 RUN dotnet restore
 
 # Copy everything and build
-COPY MyFirstShopifyApp/. ./MyFirstShopifyApp/
-WORKDIR /src/MyFirstShopifyApp
+COPY MyPublicShopifyApp/. ./MyPublicShopifyApp/
+WORKDIR /src/MyPublicShopifyApp
 RUN dotnet publish -c Release -o /app/publish
 
 # Runtime image
@@ -22,4 +22,4 @@ EXPOSE 8080
 
 # Run the app
 ENV ASPNETCORE_URLS=http://+:8080
-ENTRYPOINT ["dotnet", "MyFirstShopifyApp.dll"]
+ENTRYPOINT ["dotnet", "MyPublicShopifyApp.dll"]
