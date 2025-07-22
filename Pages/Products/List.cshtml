@@ -15,14 +15,14 @@ else
 {
     <table class="table table-striped">
         <thead>
-            <tr><th>Title</th><th>Inventory</th></tr>
+            <tr><th>Title</th><th>Status</th></tr>
         </thead>
         <tbody>
             @foreach (var product in Model.Products)
             {
                 <tr>
                     <td>@product.Title</td>
-                    @* <td>@product</td> *@
+                    <td>@product.Status</td>
                 </tr>
             }
         </tbody>

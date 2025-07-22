@@ -13,10 +13,10 @@ namespace MyPublicShopifyApp.Pages.Auth
         {
             var token = await AuthorizationService
                 .Authorize(
+                    code,
                     shop,
                     settings.ClientId,
-                    settings.ClientSecret,
-                    code);
+                    settings.ClientSecret);
 
             Response.Cookies.Append("tokencookie", token ?? "N/A", new CookieOptions
             {
